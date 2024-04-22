@@ -1,0 +1,1 @@
+import{Q as e}from"./index-Cah0JG1V.js";var t={VITE_API_URL:"http://api.cihot.com:3300",BASE_URL:"/",MODE:"production",DEV:!1,PROD:!0,SSR:!1};function r(){return e.jsxs(e.Fragment,{children:[e.jsx("div",{children:"Test"}),e.jsx("div",{children:t.VITE_GOOGLE_OAUTH_CLIENT_ID}),e.jsx("div",{children:"ok"})]})}export{r as default};
