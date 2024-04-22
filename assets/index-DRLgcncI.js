@@ -1,0 +1,1 @@
+import{Q as e}from"./index-B05tODb9.js";import{a as t}from"./index-9IJqQRoi.js";import"./index-CfZePg8Z.js";function n(){return e.jsx(e.Fragment,{})}const{Title:r}=t;function a(){return console.debug("AntPage"),e.jsxs("div",{style:{padding:32},children:[e.jsx(r,{level:4,children:"Ant Example Page"}),e.jsx(n,{})]})}export{a as default};
