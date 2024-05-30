@@ -4,13 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta
+      name="msapplication-config"
+      content="/src/img/icons/browserconfig.xml"
+    />
+    <link rel="manifest" href="/manifest.json" />
+
     <!-- styles -->
     <style>
-      .light {
-        color-scheme: light dark;
+      body {
+        margin: 0px !important;
+        padding: 0;
       }
-      .dark {
-        color-scheme: dark light;
+      [data-prefers-color='light'] {
+        color-scheme: light;
+      }
+      [data-prefers-color='dark'] {
+        color-scheme: dark;
       }
     </style>
     <!--  -->
@@ -21,10 +39,78 @@
       rel="stylesheet"
     />
     <title>TM6</title>
-    <script type="module" crossorigin src="/assets/index-BCFJ06Bx.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B8PKMRn2.css">
+    <script type="module" crossorigin src="/assets/index-BKcgbbDO.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <main id="root"></main>
+    <script>
+      if ('serviceWorker' in navigator) {
+        const registerServiceWorker = async () => {
+          await navigator.serviceWorker.register('/service-worker.js');
+          const registration = await navigator.serviceWorker.ready;
+
+          if (registration.waiting && registration.active) {
+            console.log('new sw waiting');
+            window.swNeedUpdate = true;
+          }
+
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+
+            if (installingWorker) {
+              console.log('installing sw found');
+              installingWorker.onstatechange = async () => {
+                if (
+                  installingWorker.state === 'installed' &&
+                  navigator.serviceWorker.controller
+                ) {
+                  console.log('new sw installed');
+                  window.swNeedUpdate = true;
+
+                  await SWHelper.prepareCachesForUpdate();
+                  await SWHelper.skipWaiting();
+                }
+              };
+            }
+          };
+        };
+
+        registerServiceWorker();
+
+        const SWHelper = {
+          async getWaitingWorker() {
+            const registrations =
+              (await navigator?.serviceWorker?.getRegistrations()) || [];
+            const registrationWithWaiting = registrations.find(
+              (reg) => reg.waiting,
+            );
+            return registrationWithWaiting?.waiting;
+          },
+
+          async skipWaiting() {
+            return (await SWHelper.getWaitingWorker())?.postMessage({
+              type: 'SKIP_WAITING',
+            });
+          },
+
+          async prepareCachesForUpdate() {
+            return (await SWHelper.getWaitingWorker())?.postMessage({
+              type: 'PREPARE_CACHES_FOR_UPDATE',
+            });
+          },
+        };
+
+        window.addEventListener('beforeunload', async () => {
+          if (window.swNeedUpdate) {
+            console.log('send skipWaiting');
+            await SWHelper.skipWaiting();
+          }
+        });
+      }
+
+      // document
+      //   .querySelector('#reload')
+      //   .addEventListener('click', (e) => location.reload());
+    </script>
   </body>
 </html>

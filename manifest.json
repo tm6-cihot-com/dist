@@ -1,0 +1,152 @@
+{
+  "name": "PWA of tm6",
+  "short_name": "tm6",
+  "id": "pwa-tm6",
+  "start_url": "/?source=pwa",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "display_override": ["tabbed"],
+  "tab_strip": {
+    "new_tab_button": {
+      "url": "/"
+    }
+  },
+  "orientation": "portrait",
+  "dir": "ltr",
+  "scope": "/",
+  "theme_color": "#ffffff",
+  "lang": "en-US",
+  "categories": ["education", "utilities"],
+  "description": "tm6 desktop.",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "/manifest.json"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/service-worker-assets/icons-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/service-worker-assets/icons-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/service-worker-assets/icons-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/service-worker-assets/icons-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/service-worker-assets/shot-400-822-1.png",
+      "sizes": "400x822",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/service-worker-assets/shot-400-822-2.png",
+      "sizes": "400x822",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Media Capture",
+      "short_name": "Media Capture",
+      "description": "Media Capture allows apps to use the camera and microphone of a device",
+      "url": "/media",
+      "icons": [
+        {
+          "src": "/service-worker-assets/icons-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Geolocation",
+      "short_name": "Geolocation",
+      "description": "Geolocation enables users to share their location with a web app",
+      "url": "/geolocation",
+      "icons": [
+        {
+          "src": "/service-worker-assets/icons-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "short_name": "Authentication",
+      "description": "The Web Authentication API enables passwordless authentication",
+      "url": "/authentication",
+      "icons": [
+        {
+          "src": "/service-worker-assets/icons-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Info",
+      "short_name": "Info",
+      "description": "Information on what a PWA is",
+      "url": "/info",
+      "icons": [
+        {
+          "src": "/service-worker-assets/icons-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share-target",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "edge_side_panel": {
+    "preferred_width": 480
+  },
+  "handle_links": "auto",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "file_handlers": [
+    {
+      "action": "/file-handling",
+      "accept": {
+        "image/pgn": [".png"],
+        "image/jpeg": [".jpg", ".jpeg"],
+        "image/webp": [".webp"]
+      },
+      "icons": [],
+      "launch_type": "single-client"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+pwatoday",
+      "url": "/protocol-handler-page?type=%s"
+    }
+  ]
+}
