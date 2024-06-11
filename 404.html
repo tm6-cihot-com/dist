@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=/"></meta>
-    <script>
-      sessionStorage.setItem('404.html', location.href.replace(`${location.protocol}//${location.host}`,''));
+    <script type="module">
+      const key = '404.html';
+      const uri = location.href.replace(`${location.protocol}//${location.host}`,'');
+      sessionStorage.setItem(key, uri);
+      location.replace('/');
     </script>
   </head>
 </html>
