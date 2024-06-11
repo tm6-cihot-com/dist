@@ -1,8 +1,14 @@
+/**
+ * Introduction
+ */
+self.name = 'tm6';
+console.debug(`%c${self.name} version: 3`, 'font-size:6rem;color:orange;');
+
 const buildFiles = [
   //
-  // '/app.js',
-  // '/index.html',
-  // '/manifest.json',
+  '/app.js',
+  '/index.html',
+  '/manifest.json',
 ];
 
 const staticFiles = [
@@ -168,15 +174,14 @@ const fetchHandler = async (e) => {
     return false;
   }
 
-  log('[Service Worker] Fetch', url, request.method);
+  // log('[Service Worker] Fetch', url, request.method);
 
   e.respondWith(
     caches
       .match(request, { ignoreVary: true, ignoreSearch: true })
       .then((response) => {
         if (response) {
-          log('from cache', url, request);
-
+          // log('[T] From cache', url, request);
           return response;
         }
 
@@ -185,7 +190,7 @@ const fetchHandler = async (e) => {
             ? `${url}index.html`
             : `${url}/index.html`;
 
-          log('trying index request:', indexUrl);
+          // log('[R] Try:', indexUrl);
 
           const indexRequest = new Request(indexUrl, {
             method,
@@ -203,7 +208,7 @@ const fetchHandler = async (e) => {
           return response;
         }
 
-        log('no response for url:', url);
+        // log('[F] Fetch:', url);
         return fetch(e.request);
       })
       .catch((err) =>
