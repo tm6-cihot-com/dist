@@ -1,11 +1,4 @@
-console.debug(`version: 6.0.0`, 'font-size:6rem;color:orange;');
-
-const buildFiles = [
-  //
-  // '/app.js',
-  '/index.html',
-  '/manifest.json',
-];
+const buildFiles = ['/app.js', '/index.html', '/manifest.json'];
 
 const staticFiles = [
   '/',
@@ -15,7 +8,7 @@ const staticFiles = [
 const filesToCache = [...buildFiles, ...staticFiles];
 
 self.numBadges = 0;
-const version = 510;
+const version = 511;
 
 const cacheName = `pwa-cache-${version}`;
 
