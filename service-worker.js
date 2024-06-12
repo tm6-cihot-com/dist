@@ -2,15 +2,14 @@ console.debug(`version: 6.0.0`, 'font-size:6rem;color:orange;');
 
 const buildFiles = [
   //
-  '/app.js',
+  // '/app.js',
   '/index.html',
   '/manifest.json',
 ];
 
 const staticFiles = [
-  // '/',
-  // '/three/build/three.module.js',
-  // 'https://www.googletagmanager.com/gtag/js?id=G-VTKNPJ5HVC',
+  '/',
+  'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap',
 ];
 
 const filesToCache = [...buildFiles, ...staticFiles];
