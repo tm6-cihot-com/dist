@@ -1,8 +1,4 @@
-/**
- * Introduction
- */
-self.name = 'tm6';
-console.debug(`%c${self.name} version: 3`, 'font-size:6rem;color:orange;');
+console.debug(`version: 6.0.0`, 'font-size:6rem;color:orange;');
 
 const buildFiles = [
   //
