@@ -13,7 +13,7 @@
       // 跳转分歧
       if (state === 'google-access-token' && token) {
         // 谷歌登录
-        window.history.replaceState(null, '', ' ');
+        // window.history.replaceState(null, '', ' ');
         fetch('https://api.cihot.com/oauth/google/signin', {
           method:'POST',
           headers:{ 'Content-Type': 'application/json; charset=UTF-8' },
@@ -27,17 +27,17 @@
             if(email) localStorage.setItem('email', email);
             if(id) localStorage.setItem('id', id);
             localStorage.removeItem(key);
-            location.replace('/');
+            // location.replace('/');
           })
           .catch((err) => {
             console.error(err);
             localStorage.removeItem(key);
-            location.replace('/');
+            // location.replace('/');
           });
       }else{
         // 一般
         localStorage.setItem(key, location.href);
-        location.replace('/');
+        // location.replace('/');
       }
     </script>
   </head>
