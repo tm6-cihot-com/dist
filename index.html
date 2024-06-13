@@ -30,6 +30,15 @@
       [data-prefers-color='dark'] {
         color-scheme: dark;
       }
+      .pwa-install-panel {
+        display: flex;
+        justify-content: center;
+        background-color: #7777;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+      }
     </style>
     <!--  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,6 +51,9 @@
     <script type="module" crossorigin src="/assets/index-BhjrK5I6.js"></script>
   </head>
   <body>
+    <div class="pwa-install-panel">
+      <button id="install-button" style="display: none">Install App</button>
+    </div>
     <main id="root"></main>
   </body>
 </html>
