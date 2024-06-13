@@ -1,4 +1,4 @@
-const version = 530;
+const version = 531;
 
 const buildFiles = ['/app.js'];
 
@@ -182,13 +182,13 @@ const fetchHandler = async (e) => {
 
   // log('[Service Worker] Fetch', url, request.method);
 
-  if (url === '/signin') {
-    return e.respondWith(
-      caches.match('/404.html').then((response) => {
-        return response || fetch(e.request);
-      }),
-    );
-  }
+  // if (url === '/signin') {
+  //   return e.respondWith(
+  //     caches.match('/404.html').then((response) => {
+  //       return response || fetch(e.request);
+  //     }),
+  //   );
+  // }
 
   e.respondWith(
     caches
