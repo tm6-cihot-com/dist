@@ -1,16 +1,10 @@
 {
   "name": "PWA of tm6",
   "short_name": "tm6",
-  "id": "/?source=pwa",
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "background_color": "#ffffff",
   "display": "standalone",
   "display_override": [],
-  "tab_strip": {
-    "new_tab_button": {
-      "url": "/"
-    }
-  },
   "orientation": "portrait",
   "dir": "ltr",
   "scope": "/",
@@ -28,26 +22,12 @@
     {
       "src": "/service-worker-assets/icons-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/service-worker-assets/icons-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     },
     {
       "src": "/service-worker-assets/icons-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/service-worker-assets/icons-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     }
   ],
   "screenshots": [

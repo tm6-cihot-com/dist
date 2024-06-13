@@ -8,7 +8,7 @@ const staticFiles = [
 const filesToCache = [...buildFiles, ...staticFiles];
 
 self.numBadges = 0;
-const version = 512;
+const version = 513;
 
 const cacheName = `pwa-cache-${version}`;
 
@@ -118,6 +118,26 @@ const prepareCachesForUpdate = async () => {
 
   return Promise.all(cachePromises);
 };
+
+function showInstallPromotion() {
+  const installButton = document.getElementById('install-button');
+  installButton.style.display = 'block';
+  installButton.addEventListener('click', () => {
+    // 隐藏安装按钮
+    installButton.style.display = 'none';
+    // 显示安装提示
+    deferredPrompt.prompt();
+    // 等待用户响应
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+}
 
 const installHandler = (e) => {
   e.waitUntil(
@@ -359,6 +379,24 @@ const notificationClickHandler = async (e) => {
   e.notification.close();
 };
 
+const backgroundfetchsuccessHandler = async (e) => {
+  const { id } = e.registration;
+  const clients = await getClients();
+
+  clients.forEach((client) =>
+    client.postMessage({ type: 'background-fetch-success', id }),
+  );
+};
+
+const beforeinstallpromptHandler = async (e) => {
+  // 阻止浏览器默认的安装提示
+  e.preventDefault();
+  // 保存事件以便稍后触发
+  deferredPrompt = e;
+  // 更新 UI 以通知用户 PWA 可以安装
+  showInstallPromotion();
+};
+
 self.addEventListener('install', installHandler);
 self.addEventListener('activate', activateHandler);
 self.addEventListener('fetch', fetchHandler);
@@ -366,12 +404,5 @@ self.addEventListener('push', pushHandler);
 self.addEventListener('notificationclick', notificationClickHandler);
 self.addEventListener('sync', syncHandler);
 self.addEventListener('message', messageHandler);
-
-self.addEventListener('backgroundfetchsuccess', async (e) => {
-  const { id } = e.registration;
-  const clients = await getClients();
-
-  clients.forEach((client) =>
-    client.postMessage({ type: 'background-fetch-success', id }),
-  );
-});
+self.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
+self.addEventListener('backgroundfetchsuccess', backgroundfetchsuccessHandler);
