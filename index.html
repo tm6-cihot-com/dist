@@ -3,20 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0"
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#000000" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta
       name="msapplication-config"
       content="/src/img/icons/browserconfig.xml"
     />
-    <link rel="manifest" href="/manifest.json" />
+    <!-- 
+      <link rel="manifest" href="/manifest.json" />
+      <script type="module" src="/try-service-worker.js"></script>
+     -->
 
     <!-- styles -->
     <style>
@@ -55,6 +61,5 @@
       <button id="install-button" style="display: none">Install App</button>
     </div>
     <main id="root"></main>
-    <script type="module" src="/try-service-worker.js"></script>
   </body>
 </html>
