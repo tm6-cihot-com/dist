@@ -1,3 +1,5 @@
+const version = 513;
+
 const buildFiles = ['/app.js', '/index.html', '/manifest.json'];
 
 const staticFiles = [
@@ -8,7 +10,6 @@ const staticFiles = [
 const filesToCache = [...buildFiles, ...staticFiles];
 
 self.numBadges = 0;
-const version = 513;
 
 const cacheName = `pwa-cache-${version}`;
 
