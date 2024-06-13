@@ -1,6 +1,6 @@
-const version = 518;
+const version = 519;
 
-const buildFiles = ['/app.js', '/index.html', '/manifest.json'];
+const buildFiles = ['/app.js', '/index.html', '/manifest.json', '/404.html'];
 
 const staticFiles = [
   '/',
@@ -187,7 +187,7 @@ const fetchHandler = async (e) => {
 
   if (url === '/signin') {
     return e.respondWith(
-      caches.match('/index.html').then((response) => {
+      caches.match('/404.html').then((response) => {
         return response || fetch(e.request);
       }),
     );
