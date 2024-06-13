@@ -5,7 +5,7 @@
   "start_url": "/?source=pwa",
   "background_color": "#ffffff",
   "display": "standalone",
-  "display_override": ["tabbed"],
+  "display_override": [],
   "tab_strip": {
     "new_tab_button": {
       "url": "/"
@@ -20,8 +20,8 @@
   "description": "tm6 desktop.",
   "related_applications": [
     {
-      "platform": "webapp",
-      "url": "/manifest.json"
+      "platform": "chrome_web_store",
+      "url": "https://tm6.cihot.com/manifest.json"
     }
   ],
   "icons": [

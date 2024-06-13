@@ -8,7 +8,7 @@ const staticFiles = [
 const filesToCache = [...buildFiles, ...staticFiles];
 
 self.numBadges = 0;
-const version = 511;
+const version = 512;
 
 const cacheName = `pwa-cache-${version}`;
 
@@ -158,11 +158,19 @@ const fetchHandler = async (e) => {
   const { request } = e;
   const { url, method, headers, mode, credentials, cache } = request;
 
-  if (url.includes('google')) {
+  if (url.includes('fonts.g')) {
     return false;
   }
 
   // log('[Service Worker] Fetch', url, request.method);
+
+  if (url === '/signin') {
+    return e.respondWith(
+      caches.match('/index.html').then((response) => {
+        return response || fetch(e.request);
+      }),
+    );
+  }
 
   e.respondWith(
     caches
