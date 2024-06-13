@@ -1,4 +1,4 @@
-const version = 526;
+const version = 527;
 
 const buildFiles = ['/app.js'];
 
