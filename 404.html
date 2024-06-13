@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=/"></meta>
     <script type="module">
-      localStorage.setItem('404.html', location.href);
-      location.replace('/');
+      const usp = new URLSearchParams(window.location.hash.slice(1));
+      const {
+        state,
+        access_token: token,
+      } = Object.fromEntries(usp);
+      if (state === 'google-access-token' && token) {
+        window.history.replaceState(null, '', ' ');
+        fetch('https://api.cihot.com/oauth/google/signin', { token })
+          .then(({ token }) => {
+            localStorage.setItem('access-token', token);
+            location.replace('/');
+          })
+          .catch((err) => {
+            console.error(err);
+            location.replace('/');
+          });
+      }else{
+        localStorage.setItem('404.html', location.href);
+        location.replace('/');
+      }
     </script>
   </head>
 </html>
