@@ -14,7 +14,7 @@
         fetch('https://api.cihot.com/oauth/google/signin', {
           method:'POST',
           headers:{ 'Content-Type': 'application/json; charset=UTF-8' },
-          body:JSON.stringify(token)
+          body:JSON.stringify({token})
         })
           .then(res=>res.json())
           .then(({ token }) => {
