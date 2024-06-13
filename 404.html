@@ -20,8 +20,10 @@
           body:JSON.stringify({token})
         })
           .then(res=>res.json())
-          .then(({ token }) => {
-            localStorage.setItem('access-token', token);
+          .then(({ token, email, id }) => {
+            if(token) localStorage.setItem('access-token', token);
+            if(email) localStorage.setItem('email', email);
+            if(id) localStorage.setItem('id', id);
             location.replace('/');
           })
           .catch((err) => {
