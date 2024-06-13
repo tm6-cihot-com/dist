@@ -24,13 +24,14 @@
             if(token) localStorage.setItem('access-token', token);
             if(email) localStorage.setItem('email', email);
             if(id) localStorage.setItem('id', id);
+            localStorage.removeItem(key);
             location.replace('/');
           })
           .catch((err) => {
             console.error(err);
+            localStorage.removeItem(key);
             location.replace('/');
           });
-          localStorage.removeItem(key);
       }else{
         // 一般
         localStorage.setItem(key, location.href);
