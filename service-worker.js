@@ -1,16 +1,8 @@
-const version = 522;
+const version = 525;
 
-const buildFiles = [
-  // '/app.js',
-  '/index.html',
-  '/manifest.json',
-  '/404.html',
-];
+const buildFiles = ['/app.js'];
 
-const staticFiles = [
-  '/',
-  'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap',
-];
+const staticFiles = ['/', '/index.html', '/manifest.json', '/404.html'];
 
 const filesToCache = [...buildFiles, ...staticFiles];
 
