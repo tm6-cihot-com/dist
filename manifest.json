@@ -1,7 +1,7 @@
 {
   "name": "PWA of tm6",
   "short_name": "tm6",
-  "id": "pwa-tm6",
+  "id": "/?source=pwa",
   "start_url": "/?source=pwa",
   "background_color": "#ffffff",
   "display": "standalone",
