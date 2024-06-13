@@ -34,14 +34,12 @@
     {
       "src": "/service-worker-assets/shot-400-822-1.png",
       "sizes": "400x822",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "type": "image/png"
     },
     {
       "src": "/service-worker-assets/shot-400-822-2.png",
       "sizes": "400x822",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "type": "image/png"
     }
   ],
   "shortcuts": [

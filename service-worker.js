@@ -1,6 +1,6 @@
-const version = 514;
+const version = 517;
 
-const buildFiles = ['/index.html', '/manifest.json'];
+const buildFiles = ['/app.js', '/index.html', '/manifest.json'];
 
 const staticFiles = [
   '/',
