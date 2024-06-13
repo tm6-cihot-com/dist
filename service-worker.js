@@ -1,4 +1,4 @@
-const version = 517;
+const version = 518;
 
 const buildFiles = ['/app.js', '/index.html', '/manifest.json'];
 
