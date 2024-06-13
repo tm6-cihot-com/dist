@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=/"></meta>
     <script type="module">
+      const key = '404.html'
       const usp = new URLSearchParams(window.location.hash.slice(1));
       const {
         state,
         access_token: token,
       } = Object.fromEntries(usp);
+      // 跳转分歧
       if (state === 'google-access-token' && token) {
+        // 谷歌登录
         window.history.replaceState(null, '', ' ');
         fetch('https://api.cihot.com/oauth/google/signin', {
           method:'POST',
@@ -25,8 +28,10 @@
             console.error(err);
             location.replace('/');
           });
+          localStorage.removeItem(key);
       }else{
-        localStorage.setItem('404.html', location.href);
+        // 一般
+        localStorage.setItem(key, location.href);
         location.replace('/');
       }
     </script>
