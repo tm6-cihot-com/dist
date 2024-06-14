@@ -2,43 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/"></meta>
-    <script type="module">
-      const key = '404.html'
-      const usp = new URLSearchParams(window.location.hash.slice(1));
-      const {
-        state,
-        access_token: token,
-      } = Object.fromEntries(usp);
-      // 跳转分歧
-      if (state === 'google-access-token' && token) {
-        // 谷歌登录
-        // window.history.replaceState(null, '', ' ');
-        fetch('https://api.cihot.com/oauth/google/signin', {
-          method:'POST',
-          headers:{ 'Content-Type': 'application/json; charset=UTF-8' },
-          body:JSON.stringify({token})
-        })
-          .then(res=>res.json())
-          .then((data) => {
-            const { token, email, id } = data;
-            alert(JSON.stringify(data));
-            if(token) localStorage.setItem('access-token', token);
-            if(email) localStorage.setItem('email', email);
-            if(id) localStorage.setItem('id', id);
-            localStorage.removeItem(key);
-            // location.replace('/');
-          })
-          .catch((err) => {
-            console.error(err);
-            localStorage.removeItem(key);
-            // location.replace('/');
-          });
-      }else{
-        // 一般
-        localStorage.setItem(key, location.href);
-        // location.replace('/');
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta
+      name="msapplication-config"
+      content="/src/img/icons/browserconfig.xml"
+    />
+    <!-- 
+      <link rel="manifest" href="/manifest.json" />
+      <script type="module" src="/try-service-worker.js"></script>
+     -->
+
+    <!-- styles -->
+    <style>
+      body {
+        margin: 0px !important;
+        padding: 0;
       }
-    </script>
+      [data-prefers-color='light'] {
+        color-scheme: light;
+      }
+      [data-prefers-color='dark'] {
+        color-scheme: dark;
+      }
+      .pwa-install-panel {
+        display: flex;
+        justify-content: center;
+        background-color: #7777;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+      }
+    </style>
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>TM6</title>
+    <script type="module" crossorigin src="/app.js"></script>
   </head>
+  <body>
+    <div class="pwa-install-panel">
+      <button id="install-button" style="display: none">Install App</button>
+    </div>
+    <main id="root"></main>
+  </body>
 </html>
