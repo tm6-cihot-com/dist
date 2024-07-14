@@ -30,20 +30,42 @@
         margin: 0px !important;
         padding: 0;
       }
+
       [data-prefers-color='light'] {
         color-scheme: light;
       }
+
       [data-prefers-color='dark'] {
         color-scheme: dark;
       }
+
       .pwa-install-panel {
         display: flex;
         justify-content: center;
-        background-color: #7777;
+        background-color: #000;
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
+      }
+    </style>
+    <style>
+      /* chart */
+      :root {
+        --background-color-light: #fff;
+        --text-color-light: #000;
+        --background-color-dark: #000;
+        --text-color-dark: #fff;
+      }
+
+      [data-prefers-color='light'] {
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+      }
+
+      [data-prefers-color='dark'] {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
       }
     </style>
     <!--  -->
@@ -56,6 +78,7 @@
     <title>TM6</title>
     <script type="module" crossorigin src="/app.js"></script>
   </head>
+
   <body>
     <div class="pwa-install-panel">
       <button id="install-button" style="display: none">Install App</button>
